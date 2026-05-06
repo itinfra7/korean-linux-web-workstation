@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ product_title }}</title>
+    <link rel="stylesheet" href="/static/site.css">
+  </head>
+  <body>
+    <main class="desktop">
+      <section class="window login-window" aria-label="workstation login">
+        <header class="title-bar">
+          <div class="title-text">{{ product_title }}</div>
+        </header>
+        <div class="window-body">
+          {% if error %}
+          <div class="notice">{{ error }}</div>
+          {% endif %}
+
+          {% if session_data %}
+          <div class="session-card">
+            <p class="session-label">로그인됨</p>
+            <p class="session-user">{{ session_data.username }}</p>
+            <p class="session-meta">Client IP: <span class="mono">{{ client_ip }}</span></p>
+            <div class="button-row">
+              <form method="get" action="/workspace/" class="logout-form">
+                <button type="submit">바탕화면</button>
+              </form>
+              <form method="post" action="/logout" class="logout-form">
+                <button type="submit">로그아웃</button>
+              </form>
+            </div>
+          </div>
+          {% else %}
+          <form method="post" action="/login" autocomplete="off" class="login-form" id="login-form">
+            <label for="login_id">아이디</label>
+            <input id="login_id" name="login_id" type="text" value="{{ login_id }}" spellcheck="false" maxlength="128" autofocus>
+
+            <label for="password">비밀번호</label>
+            <input id="password" name="password" type="password" value="" maxlength="256">
+
+            <div class="button-row">
+              <button type="submit">확인</button>
+              <button type="reset">지우기</button>
+              <button type="button" id="email-login-open" class="email-login-open" aria-label="이메일 인증 로그인" title="이메일 인증 로그인">
+                <span class="email-login-open-icon" aria-hidden="true"></span>
+              </button>
+            </div>
+          </form>
+
+          <div
+            id="email-login-overlay"
+            class="email-login-overlay"
+            hidden
+            data-otp-ttl="{{ email_login_ttl_seconds }}"
+            data-request-limit="{{ email_login_request_limit }}"
+            data-request-window="{{ email_login_request_window_seconds }}"
+            data-resend-cooldown="{{ email_login_resend_cooldown_seconds }}"
+          >
+            <section class="window email-login-window" role="dialog" aria-modal="true" aria-labelledby="email-login-title">
+              <header class="title-bar email-login-title-bar">
+                <div class="title-text" id="email-login-title">이메일 인증 로그인</div>
+                <button type="button" class="titlebar-close" id="email-login-close" aria-label="닫기">×</button>
+              </header>
+              <div class="window-body">
+                <section class="email-login-panel" id="email-login-request-panel">
+                  <form autocomplete="off" class="login-form" id="email-login-request-form">
+                    <input id="email-login-id" name="login_id" type="text" value="" spellcheck="false" maxlength="128" aria-label="유저명" placeholder="아이디">
+                    <div class="button-row">
+                      <button type="submit" id="email-login-request-submit">확인</button>
+                    </div>
+                  </form>
+                </section>
+
+                <section class="email-login-panel email-login-verify-panel" id="email-login-verify-panel" hidden>
+                  <p class="email-login-status" id="email-login-status">인증 번호를 입력하십시오.</p>
+                  <p class="email-login-meta" id="email-login-expiry">남은 시간 10:00</p>
+                  <p class="email-login-meta" id="email-login-resend-meta">다시 보내기 가능 00:30</p>
+                  <form autocomplete="off" class="login-form" id="email-login-verify-form">
+                    <label for="email-login-code">인증 번호</label>
+                    <input id="email-login-code" name="code" type="text" value="" inputmode="numeric" maxlength="6" autocomplete="one-time-code">
+                    <div class="button-row">
+                      <button type="submit" id="email-login-verify-submit">확인</button>
+                      <button type="button" id="email-login-resend" disabled>다시 보내기</button>
+                    </div>
+                  </form>
+                </section>
+              </div>
+            </section>
+          </div>
+          {% endif %}
+
+          <section class="ip-box" aria-label="client ip">
+            <div class="ip-box-title">Client IP</div>
+            <div class="ip-value mono">{{ client_ip }}</div>
+          </section>
+        </div>
+      </section>
+    </main>
+    <div id="toast-root" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+    <script src="/static/site.js"></script>
+  </body>
+</html>

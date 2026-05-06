@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=‍휴지통
+Name[ko]=‍휴지통
+Comment=Open workspace Trash
+Comment[ko]=작업공간 휴지통을 엽니다
+Exec=/usr/local/bin/workstation-explorer trash
+Icon=user-trash
+Terminal=false
+Categories=Utility;FileManager;

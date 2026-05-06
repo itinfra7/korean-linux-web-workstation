@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>터미널</title>
+    <link rel="stylesheet" href="/static/vendor/xterm/xterm.css">
+    <link rel="stylesheet" href="{{ terminal_frame_css_url }}">
+  </head>
+  <body>
+    <main id="workstation_terminal_frame_root" class="workstation-terminal-frame-root" aria-label="터미널 셸">
+      <div id="workstation_terminal_host" class="workstation-terminal-frame-host"></div>
+      <div id="workstation_terminal_empty" class="workstation-terminal-frame-empty">셸을 연결하는 중입니다.</div>
+    </main>
+    <div id="workstation_terminal_menu" class="workstation-terminal-frame-menu" hidden>
+      <button type="button" data-action="copy">복사</button>
+      <button type="button" data-action="paste">붙여넣기</button>
+    </div>
+    <script>
+      window.WORKSTATION_TERMINAL_CONFIG = {
+        websocketPath: "/api/workspace-terminal-ws",
+        username: {{ session_data.username|tojson }},
+      };
+    </script>
+    <script src="/static/vendor/xterm/xterm.js"></script>
+    <script src="/static/vendor/xterm/addon-fit.js"></script>
+    <script src="{{ terminal_frame_js_url }}"></script>
+  </body>
+</html>

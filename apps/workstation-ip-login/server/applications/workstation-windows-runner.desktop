@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Windows Program
+Name[ko]=Windows 프로그램
+Comment=Run DOS and Windows binaries through the workstation runtime
+Comment[ko]=워크스테이션 런타임으로 DOS 및 Windows 바이너리 실행
+Exec=/usr/local/bin/workstation-winrun --desktop %f
+TryExec=/usr/local/bin/workstation-winrun
+Icon=application-x-ms-dos-executable
+Terminal=false
+NoDisplay=true
+StartupNotify=true
+MimeType=application/x-dosexec;application/x-ms-dos-executable;application/x-msdownload;application/vnd.microsoft.portable-executable;application/x-msi;application/x-bat;text/x-msdos-batch;text/x-ms-regedit;application/x-workstation-dos-com;application/x-workstation-windows-batch;application/x-workstation-windows-cmd;application/x-workstation-msdos-pif;application/x-workstation-windows-registry;

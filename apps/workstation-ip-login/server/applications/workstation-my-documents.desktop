@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=‌내 문서
+Name[ko]=‌내 문서
+Comment=Open workspace home
+Comment[ko]=작업공간 홈을 엽니다
+Exec=/usr/local/bin/workstation-explorer documents
+Icon=folder-documents
+Terminal=false
+Categories=Utility;FileManager;

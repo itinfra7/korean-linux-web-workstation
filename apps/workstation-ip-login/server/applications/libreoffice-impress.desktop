@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LibreOffice Impress
+Name[ko]=리브레오피스 Impress
+Comment=Launch LibreOffice Impress with the managed Korean locale wrapper
+Comment[ko]=관리형 한국어 locale 래퍼로 리브레오피스 Impress 를 실행합니다
+Exec=/usr/local/bin/workstation-libreoffice --impress %U
+TryExec=/usr/local/bin/workstation-libreoffice
+Icon=libreoffice-impress
+Terminal=false
+StartupNotify=true
+Categories=Office;Presentation;

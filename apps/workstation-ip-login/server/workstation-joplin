@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export LANG="${LANG:-ko_KR.UTF-8}"
+export LANGUAGE="${LANGUAGE:-ko_KR:ko:en_US:en}"
+export LC_ALL="${LC_ALL:-ko_KR.UTF-8}"
+export LC_CTYPE="${LC_CTYPE:-ko_KR.UTF-8}"
+export GTK_IM_MODULE="${GTK_IM_MODULE:-ibus}"
+export QT_IM_MODULE="${QT_IM_MODULE:-ibus}"
+export XMODIFIERS="${XMODIFIERS:-@im=ibus}"
+export SDL_IM_MODULE="${SDL_IM_MODULE:-ibus}"
+export GLFW_IM_MODULE="${GLFW_IM_MODULE:-ibus}"
+export CLUTTER_IM_MODULE="${CLUTTER_IM_MODULE:-ibus}"
+export APPIMAGELAUNCHER_DISABLE=TRUE
+
+if [[ -n "${XDG_RUNTIME_DIR:-}" && -z "${DBUS_SESSION_BUS_ADDRESS:-}" && -S "${XDG_RUNTIME_DIR}/bus" ]]; then
+  export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
+fi
+
+exec /opt/joplin/current/Joplin.AppImage --no-sandbox "$@"

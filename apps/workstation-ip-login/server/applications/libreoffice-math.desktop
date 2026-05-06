@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=리브레오피스 Math
+Name[ko]=리브레오피스 Math
+Comment=Launch LibreOffice Math with the managed Korean locale wrapper
+Comment[ko]=관리형 한국어 locale 래퍼로 리브레오피스 Math 를 실행합니다
+Exec=/usr/local/bin/workstation-libreoffice --math %U
+TryExec=/usr/local/bin/workstation-libreoffice
+Icon=libreoffice-math
+Terminal=false
+StartupNotify=true
+Categories=Office;Education;Science;Math;X-Red-Hat-Base;
+MimeType=application/mathml+xml;application/vnd.oasis.opendocument.formula;application/vnd.oasis.opendocument.formula-template;application/vnd.stardivision.math;application/vnd.sun.xml.math;application/x-starmath;text/mathml;

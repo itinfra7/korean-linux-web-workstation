@@ -1,0 +1,15 @@
+[Unit]
+Description=korean-linux-web-workstation KasmVNC workspace for %i
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/workstation-ip-login.env
+ExecStart=/usr/local/lib/workstation-desktop/workstation-kasmvnc-session.sh %i
+Restart=on-failure
+RestartSec=2
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target

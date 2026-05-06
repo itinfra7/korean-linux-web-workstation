@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-workstation-dos-com">
+    <comment>DOS COM program</comment>
+    <glob pattern="*.com"/>
+  </mime-type>
+  <mime-type type="application/x-workstation-windows-batch">
+    <comment>Windows batch file</comment>
+    <glob pattern="*.bat"/>
+  </mime-type>
+  <mime-type type="application/x-workstation-windows-cmd">
+    <comment>Windows command script</comment>
+    <glob pattern="*.cmd"/>
+  </mime-type>
+  <mime-type type="application/x-workstation-msdos-pif">
+    <comment>MS-DOS program information file</comment>
+    <glob pattern="*.pif"/>
+  </mime-type>
+  <mime-type type="application/x-workstation-windows-registry">
+    <comment>Windows registry script</comment>
+    <glob pattern="*.reg"/>
+  </mime-type>
+</mime-info>

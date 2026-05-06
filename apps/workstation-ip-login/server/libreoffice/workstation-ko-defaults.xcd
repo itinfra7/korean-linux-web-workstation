@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:data xmlns:oor="http://openoffice.org/2001/registry"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dependency file="main"/>
+  <oor:component-data oor:name="Setup" oor:package="org.openoffice">
+    <node oor:name="L10N">
+      <prop oor:name="ooLocale" oor:op="fuse">
+        <value>ko</value>
+      </prop>
+      <prop oor:name="ooSetupSystemLocale" oor:op="fuse">
+        <value>ko-KR</value>
+      </prop>
+    </node>
+  </oor:component-data>
+  <oor:component-data oor:name="System" oor:package="org.openoffice">
+    <node oor:name="L10N">
+      <prop oor:name="Locale" oor:op="fuse">
+        <value>ko-KR</value>
+      </prop>
+      <prop oor:name="UILocale" oor:op="fuse">
+        <value>ko</value>
+      </prop>
+      <prop oor:name="SystemLocale" oor:op="fuse">
+        <value>ko-KR</value>
+      </prop>
+    </node>
+  </oor:component-data>
+  <oor:component-data oor:name="Office" oor:package="org.openoffice">
+    <node oor:name="Common">
+      <node oor:name="Misc">
+        <prop oor:name="LastTipOfTheDayShown" oor:op="fuse">
+          <value>2147483647</value>
+        </prop>
+        <prop oor:name="LastTipOfTheDayID" oor:op="fuse">
+          <value>0</value>
+        </prop>
+        <prop oor:name="ShowTipOfTheDay" oor:op="fuse">
+          <value>false</value>
+        </prop>
+      </node>
+    </node>
+    <node oor:name="Linguistic">
+      <node oor:name="General">
+        <prop oor:name="UILocale" oor:op="fuse">
+          <value>ko</value>
+        </prop>
+        <prop oor:name="DefaultLocale" oor:op="fuse">
+          <value>ko-KR</value>
+        </prop>
+        <prop oor:name="DefaultLocale_CJK" oor:op="fuse">
+          <value>ko-KR</value>
+        </prop>
+        <prop oor:name="DefaultLocale_CTL" oor:op="fuse">
+          <value>ko-KR</value>
+        </prop>
+      </node>
+    </node>
+  </oor:component-data>
+  <oor:component-data oor:name="WriterCommands" oor:package="org.openoffice.Office.UI">
+    <node oor:name="UserInterface">
+      <node oor:name="Commands">
+        <node oor:name=".uno:NumberingMenu" oor:op="replace">
+          <prop oor:name="Label" oor:op="fuse">
+            <value xml:lang="ko">목록(~L)</value>
+          </prop>
+        </node>
+        <node oor:name=".uno:PageDialog" oor:op="replace">
+          <prop oor:name="Label" oor:op="fuse">
+            <value xml:lang="ko">페이지 스타일(~P)...</value>
+          </prop>
+          <prop oor:name="ContextLabel" oor:op="fuse">
+            <value xml:lang="ko">페이지 스타일(~P)...</value>
+          </prop>
+        </node>
+      </node>
+      <node oor:name="Popups">
+        <node oor:name=".uno:NumberingMenu" oor:op="replace">
+          <prop oor:name="Label" oor:op="fuse">
+            <value xml:lang="ko">목록(~L)</value>
+          </prop>
+        </node>
+      </node>
+    </node>
+  </oor:component-data>
+  <oor:component-data oor:name="CalcCommands" oor:package="org.openoffice.Office.UI">
+    <node oor:name="UserInterface">
+      <node oor:name="Commands">
+        <node oor:name=".uno:PageDialog" oor:op="replace">
+          <prop oor:name="Label" oor:op="fuse">
+            <value xml:lang="ko">페이지 스타일(~P)...</value>
+          </prop>
+          <prop oor:name="ContextLabel" oor:op="fuse">
+            <value xml:lang="ko">페이지 스타일(~P)...</value>
+          </prop>
+        </node>
+      </node>
+    </node>
+  </oor:component-data>
+  <oor:component-data oor:name="GenericCommands" oor:package="org.openoffice.Office.UI">
+    <node oor:name="UserInterface">
+      <node oor:name="Commands">
+        <node oor:name=".uno:TipOfTheDay" oor:op="replace">
+          <prop oor:name="Label" oor:op="fuse">
+            <value xml:lang="ko">오늘의 팁(~T)</value>
+          </prop>
+          <prop oor:name="ContextLabel" oor:op="fuse">
+            <value xml:lang="ko">오늘의 팁 보기</value>
+          </prop>
+          <prop oor:name="TooltipLabel" oor:op="fuse">
+            <value xml:lang="ko">오늘의 팁 대화상자 보기</value>
+          </prop>
+        </node>
+      </node>
+    </node>
+  </oor:component-data>
+  <oor:component-data oor:name="Sidebar" oor:package="org.openoffice.Office.UI">
+    <node oor:name="Content">
+      <node oor:name="Panels">
+        <node oor:name="TextColumnsPropertyPanel" oor:op="replace">
+          <prop oor:name="Title" oor:op="fuse">
+            <value xml:lang="ko">단</value>
+          </prop>
+        </node>
+      </node>
+    </node>
+  </oor:component-data>
+</oor:data>

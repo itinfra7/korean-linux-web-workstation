@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=리브레오피스 Base
+Name[ko]=리브레오피스 Base
+Comment=Launch LibreOffice Base with the managed Korean locale wrapper
+Comment[ko]=관리형 한국어 locale 래퍼로 리브레오피스 Base 를 실행합니다
+Exec=/usr/local/bin/workstation-libreoffice --base %U
+TryExec=/usr/local/bin/workstation-libreoffice
+Icon=libreoffice-base
+Terminal=false
+StartupNotify=true
+Categories=Office;Database;X-Red-Hat-Base;
+MimeType=application/vnd.oasis.opendocument.base;application/vnd.sun.xml.base;

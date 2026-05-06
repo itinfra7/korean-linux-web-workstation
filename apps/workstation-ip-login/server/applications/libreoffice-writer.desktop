@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LibreOffice Writer
+Name[ko]=리브레오피스 Writer
+Comment=Launch LibreOffice Writer with the managed Korean locale wrapper
+Comment[ko]=관리형 한국어 locale 래퍼로 리브레오피스 Writer 를 실행합니다
+Exec=/usr/local/bin/workstation-libreoffice --writer %U
+TryExec=/usr/local/bin/workstation-libreoffice
+Icon=libreoffice-writer
+Terminal=false
+StartupNotify=true
+Categories=Office;WordProcessor;

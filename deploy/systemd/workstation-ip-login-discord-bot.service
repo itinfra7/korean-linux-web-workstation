@@ -1,0 +1,17 @@
+[Unit]
+Description=korean-linux-web-workstation Discord IP grant bot
+After=network-online.target redis-server.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=workstation-login
+Group=workstation-login
+WorkingDirectory=/opt/korean-linux-web-workstation/apps/workstation-ip-login
+EnvironmentFile=/etc/workstation-ip-login.env
+ExecStart=/opt/korean-linux-web-workstation/.venv/bin/python discord_bot.py
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

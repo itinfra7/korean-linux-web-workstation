@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:data xmlns:oor="http://openoffice.org/2001/registry"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <oor:component-data oor:name="WriterCommands" oor:package="org.openoffice.Office.UI">
+    <node oor:name="UserInterface">
+      <node oor:name="Commands">
+        <node oor:name=".uno:NumberingMenu">
+          <prop oor:name="Label" oor:type="xs:string">
+            <value xml:lang="ko">목록(~L)</value>
+          </prop>
+        </node>
+        <node oor:name=".uno:PageDialog">
+          <prop oor:name="Label" oor:type="xs:string">
+            <value xml:lang="ko">페이지 스타일(~P)...</value>
+          </prop>
+          <prop oor:name="ContextLabel" oor:type="xs:string">
+            <value xml:lang="ko">페이지 스타일(~P)...</value>
+          </prop>
+        </node>
+      </node>
+    </node>
+  </oor:component-data>
+  <oor:component-data oor:name="CalcCommands" oor:package="org.openoffice.Office.UI">
+    <node oor:name="UserInterface">
+      <node oor:name="Commands">
+        <node oor:name=".uno:PageDialog">
+          <prop oor:name="Label" oor:type="xs:string">
+            <value xml:lang="ko">페이지 스타일(~P)...</value>
+          </prop>
+          <prop oor:name="ContextLabel" oor:type="xs:string">
+            <value xml:lang="ko">페이지 스타일(~P)...</value>
+          </prop>
+        </node>
+      </node>
+    </node>
+  </oor:component-data>
+</oor:data>

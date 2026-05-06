@@ -1,0 +1,18 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ko\n"
+
+msgid "File"
+msgstr "파일"
+
+msgid "Tools"
+msgstr "도구"
+
+msgid "Help"
+msgstr "도움말"
+
+msgctxt "stock"
+msgid "_Help"
+msgstr "도움말(_H)"
+

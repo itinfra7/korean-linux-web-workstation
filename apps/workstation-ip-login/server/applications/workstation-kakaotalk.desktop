@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=KakaoTalk
+Name[ko]=카카오톡
+Comment=Run KakaoTalk through the workstation Wine runtime
+Comment[ko]=워크스테이션 Wine 런타임으로 카카오톡을 실행합니다
+Exec=/usr/local/bin/workstation-kakaotalk
+TryExec=/usr/local/bin/workstation-kakaotalk
+Icon=/usr/local/share/workstation-desktop/icons/workstation-kakaotalk.png
+Terminal=false
+StartupNotify=true
+Categories=Network;InstantMessaging;Chat;

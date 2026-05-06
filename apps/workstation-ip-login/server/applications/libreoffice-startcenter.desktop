@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=LibreOffice
+Name[ko]=리브레오피스
+Comment=Launch LibreOffice with the managed Korean locale wrapper
+Comment[ko]=관리형 한국어 locale 래퍼로 리브레오피스를 실행합니다
+Exec=/usr/local/bin/workstation-libreoffice %U
+TryExec=/usr/local/bin/workstation-libreoffice
+Icon=libreoffice-startcenter
+Terminal=false
+StartupNotify=true
+Categories=Office;
+MimeType=application/vnd.oasis.opendocument.text;application/vnd.oasis.opendocument.spreadsheet;application/vnd.oasis.opendocument.presentation;application/vnd.oasis.opendocument.graphics;application/msword;application/vnd.ms-excel;application/vnd.ms-powerpoint;application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.openxmlformats-officedocument.presentationml.presentation;

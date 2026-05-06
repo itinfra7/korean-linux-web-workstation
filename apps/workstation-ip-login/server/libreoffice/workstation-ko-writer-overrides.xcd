@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<oor:data xmlns:oor="http://openoffice.org/2001/registry"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <dependency file="writer"/>
+  <oor:component-data oor:name="WriterCommands" oor:package="org.openoffice.Office.UI">
+    <node oor:name="UserInterface">
+      <node oor:name="Commands">
+        <node oor:name=".uno:StyleApply?Style:string=Standard&amp;FamilyName:string=ParagraphStyles" oor:op="replace">
+          <prop oor:name="Label" oor:op="fuse">
+            <value xml:lang="ko">기본 문단 스타일</value>
+          </prop>
+        </node>
+        <node oor:name=".uno:DefaultParaStyle" oor:op="replace">
+          <prop oor:name="Label" oor:op="fuse">
+            <value xml:lang="ko">기본 문단 스타일</value>
+          </prop>
+          <prop oor:name="TooltipLabel" oor:op="fuse">
+            <value xml:lang="ko">기본 문단 스타일</value>
+          </prop>
+        </node>
+        <node oor:name=".uno:StyleApply?Style:string=Standard&amp;FamilyName:string=PageStyles" oor:op="replace">
+          <prop oor:name="Label" oor:op="fuse">
+            <value xml:lang="ko">기본 페이지 스타일</value>
+          </prop>
+        </node>
+      </node>
+    </node>
+  </oor:component-data>
+</oor:data>

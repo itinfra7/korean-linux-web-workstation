@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: ko\n"
+
+msgid "File"
+msgstr "파일"
+
+msgid "Tools"
+msgstr "도구"
+
+msgid "Help"
+msgstr "도움말"
+
+msgid "Welcome to %PRODUCTNAME"
+msgstr "%PRODUCTNAME에 오신 것을 환영합니다"
+
+msgid "Drop a document here or open an app to create one."
+msgstr "문서를 여기에 놓거나 앱을 열어 새 문서를 만드십시오."
+

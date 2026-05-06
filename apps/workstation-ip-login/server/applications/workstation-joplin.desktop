@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Joplin
+Name[ko]=Joplin
+Comment=Take notes and manage notebooks with Joplin
+Comment[ko]=Joplin으로 노트를 작성하고 노트북을 관리합니다
+Exec=/usr/local/bin/workstation-joplin %u
+TryExec=/usr/local/bin/workstation-joplin
+Icon=workstation-joplin
+Terminal=false
+StartupNotify=true
+StartupWMClass=Joplin
+Categories=Office;
+MimeType=x-scheme-handler/joplin;

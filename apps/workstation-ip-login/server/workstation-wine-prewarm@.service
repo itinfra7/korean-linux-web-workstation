@@ -1,0 +1,12 @@
+[Unit]
+Description=Asynchronous workstation Wine prefix prewarm for %i
+After=local-fs.target network-online.target
+Wants=network-online.target
+RequiresMountsFor=/var/lib/workstation-desktop/users /usr/local/share/workstation-desktop/wine-prefix-templates
+
+[Service]
+Type=oneshot
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+ExecStart=/usr/local/sbin/workstation-desktop-session prewarm-wine %i

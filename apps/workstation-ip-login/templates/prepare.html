@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ product_title }}</title>
+    <link rel="stylesheet" href="/static/site.css">
+  </head>
+  <body data-workspace-prepare="1">
+    <main class="desktop">
+      <section class="window login-window" aria-label="workspace preparation">
+        <header class="title-bar">
+          <div class="title-text">{{ product_title }}</div>
+        </header>
+        <div class="window-body">
+          <div class="prepare-card">
+            <p class="session-label" id="prepare-phase-label">바탕화면 준비 중</p>
+            <p class="session-user">{{ session_data.username }}</p>
+            <p class="prepare-text" id="prepare-phase-detail">잠시만 기다려 주세요.</p>
+            <div class="progress-box" aria-hidden="true">
+              <div class="progress-bar"></div>
+            </div>
+            <p class="session-meta">Client IP: <span class="mono">{{ client_ip }}</span></p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="toast-root" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+    <script src="/static/site.js"></script>
+  </body>
+</html>

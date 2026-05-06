@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=⁠터미널
+Name[ko]=⁠터미널
+Comment=Open the workspace terminal
+Comment[ko]=작업공간 터미널을 엽니다
+Exec=/usr/local/bin/workstation-terminal
+Icon=utilities-terminal
+Terminal=false
+Categories=System;TerminalEmulator;

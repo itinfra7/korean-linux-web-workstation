@@ -1,0 +1,1616 @@
+@font-face {
+  font-family: "JoseonGulim";
+  src: url("/static/fonts/JoseonGulim.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+html.workstation-kasmvnc,
+body.workstation-kasmvnc {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #008080;
+  --workstation-kasm-sidebar-width: 72px;
+  --workstation-ui-font: "Gulim", "굴림", "JoseonGulim", "Dotum", "돋움", "MS Sans Serif", sans-serif;
+  --workstation-win95-bg: #c0c0c0;
+  --workstation-win95-panel: #d4d0c8;
+  --workstation-win95-face: #c0c0c0;
+  --workstation-win95-white: #ffffff;
+  --workstation-win95-dark: #3f3f3f;
+  --workstation-win95-mid: #808080;
+  --workstation-win95-blue: #000080;
+}
+
+body.workstation-kasmvnc #noVNC_fullscreen_button,
+body.workstation-kasmvnc #noVNC_fullscreen_button + *,
+body.workstation-kasmvnc #noVNC_setting_pointer_lock,
+body.workstation-kasmvnc label[for="noVNC_setting_pointer_lock"],
+body.workstation-kasmvnc #noVNC_logo,
+body.workstation-kasmvnc #noVNC_clipboard_button,
+body.workstation-kasmvnc #noVNC_settings_button,
+body.workstation-kasmvnc #noVNC_power_button,
+body.workstation-kasmvnc #noVNC_disconnect_button,
+body.workstation-kasmvnc #noVNC_keyboard_button,
+body.workstation-kasmvnc #noVNC_toggle_extra_keys_button {
+  display: none !important;
+}
+
+body.workstation-kasmvnc #noVNC_container {
+  position: fixed !important;
+  inset: 0 0 0 var(--workstation-kasm-sidebar-width) !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+body.workstation-kasmvnc #noVNC_control_bar_anchor {
+  left: -10000px !important;
+  right: auto !important;
+  top: 0 !important;
+  bottom: auto !important;
+  height: 1px !important;
+  width: 1px !important;
+  transform: none !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  border-radius: 0 !important;
+}
+
+body.workstation-kasmvnc #noVNC_control_bar {
+  left: 0 !important;
+  right: auto !important;
+  top: 0 !important;
+  bottom: auto !important;
+  height: 1px !important;
+  width: 1px !important;
+  transform: none !important;
+  transition: none !important;
+  background: transparent !important;
+  display: block !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  border-radius: 0 !important;
+}
+
+body.workstation-kasmvnc #noVNC_control_bar_anchor,
+body.workstation-kasmvnc #noVNC_control_bar,
+body.workstation-kasmvnc #noVNC_control_bar *,
+body.workstation-kasmvnc #workstation_bar_overlay,
+body.workstation-kasmvnc #workstation_bar_overlay *,
+body.workstation-kasmvnc #workstation_bar_shell,
+body.workstation-kasmvnc #workstation_bar_shell * {
+  border-radius: 0 !important;
+}
+
+body.workstation-kasmvnc #noVNC_control_bar_handle {
+  display: none !important;
+}
+
+body.workstation-kasmvnc #workstation_bar_overlay {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--workstation-kasm-sidebar-width);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px 0 0;
+  background: var(--workstation-win95-face);
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-mid);
+  box-sizing: border-box;
+  z-index: 70;
+}
+
+body.workstation-kasmvnc #workstation_bar_shell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+body.workstation-kasmvnc .workstation-bar-slot {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+body.workstation-kasmvnc #noVNC_transition,
+body.workstation-kasmvnc #noVNC_status {
+  z-index: 50 !important;
+}
+
+body.workstation-kasmvnc .workstation-bar-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  padding: 0;
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+  background: var(--workstation-win95-face);
+  color: #000;
+  font: 12px var(--workstation-ui-font);
+  cursor: pointer;
+  position: relative;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+body.workstation-kasmvnc .workstation-bar-button:active {
+  border-top: 2px solid var(--workstation-win95-dark);
+  border-left: 2px solid var(--workstation-win95-dark);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+}
+
+body.workstation-kasmvnc .workstation-bar-button.is-selected {
+  border-top: 2px solid var(--workstation-win95-dark);
+  border-left: 2px solid var(--workstation-win95-dark);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  background: #b8b4ac;
+}
+
+body.workstation-kasmvnc .workstation-bar-badge {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3px;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  background: #ff0000;
+  color: #fff;
+  font: 700 10px var(--workstation-ui-font);
+  line-height: 1;
+  z-index: 2;
+  pointer-events: none;
+}
+
+body.workstation-kasmvnc .workstation-bar-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 4px 7px;
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+  background: #ffffe1;
+  color: #000;
+  font: 11px var(--workstation-ui-font);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 0 !important;
+}
+
+body.workstation-kasmvnc .workstation-bar-button:hover::after,
+body.workstation-kasmvnc .workstation-bar-button:focus-visible::after {
+  opacity: 1;
+}
+
+body.workstation-kasmvnc .workstation-bar-icon {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 20px;
+  image-rendering: pixelated;
+}
+
+body.workstation-kasmvnc .workstation-bar-icon-files {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'%3E%3Crect width='20' height='20' fill='none'/%3E%3Crect x='3' y='4' width='6' height='2' fill='%23fff6bc'/%3E%3Crect x='2' y='5' width='8' height='2' fill='%23ffe48a'/%3E%3Crect x='1' y='6' width='1' height='8' fill='%23000'/%3E%3Crect x='2' y='6' width='14' height='1' fill='%23000'/%3E%3Crect x='16' y='7' width='1' height='7' fill='%23000'/%3E%3Crect x='2' y='14' width='14' height='1' fill='%23000'/%3E%3Crect x='2' y='7' width='14' height='7' fill='%23f6cf4f'/%3E%3Crect x='3' y='7' width='11' height='1' fill='%23fff7c7'/%3E%3Crect x='3' y='8' width='11' height='4' fill='%23f0c137'/%3E%3Crect x='3' y='12' width='11' height='1' fill='%23c18918'/%3E%3Crect x='9' y='4' width='1' height='2' fill='%23000'/%3E%3Crect x='3' y='3' width='6' height='1' fill='%23000'/%3E%3Crect x='2' y='4' width='1' height='2' fill='%23000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-bar-icon-chat {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'%3E%3Crect width='20' height='20' fill='none'/%3E%3Crect x='3' y='4' width='12' height='1' fill='%23000'/%3E%3Crect x='2' y='5' width='1' height='8' fill='%23000'/%3E%3Crect x='15' y='5' width='1' height='6' fill='%23000'/%3E%3Crect x='3' y='11' width='9' height='1' fill='%23000'/%3E%3Crect x='12' y='10' width='3' height='1' fill='%23000'/%3E%3Crect x='11' y='11' width='1' height='1' fill='%23000'/%3E%3Crect x='10' y='12' width='1' height='1' fill='%23000'/%3E%3Crect x='3' y='5' width='12' height='6' fill='%23ffffff'/%3E%3Crect x='4' y='6' width='8' height='1' fill='%23000080'/%3E%3Crect x='4' y='8' width='7' height='1' fill='%23808080'/%3E%3Crect x='4' y='10' width='5' height='1' fill='%23808080'/%3E%3Crect x='10' y='13' width='2' height='1' fill='%23000'/%3E%3Crect x='12' y='12' width='1' height='1' fill='%23000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-bar-icon-fullscreen {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'%3E%3Crect width='20' height='20' fill='none'/%3E%3Crect x='4' y='4' width='12' height='1' fill='%23000'/%3E%3Crect x='4' y='5' width='1' height='10' fill='%23000'/%3E%3Crect x='15' y='5' width='1' height='10' fill='%23000'/%3E%3Crect x='5' y='5' width='10' height='10' fill='%23ffffff'/%3E%3Crect x='5' y='5' width='10' height='2' fill='%23000080'/%3E%3Crect x='5' y='15' width='10' height='1' fill='%23000'/%3E%3Crect x='6' y='7' width='8' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='8' width='8' height='5' fill='%23c0c0c0'/%3E%3Crect x='6' y='13' width='8' height='1' fill='%23808080'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-bar-icon-notifications {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'%3E%3Crect width='20' height='20' fill='none'/%3E%3Crect x='8' y='3' width='4' height='1' fill='%23000'/%3E%3Crect x='7' y='4' width='1' height='1' fill='%23000'/%3E%3Crect x='12' y='4' width='1' height='1' fill='%23000'/%3E%3Crect x='6' y='5' width='1' height='2' fill='%23000'/%3E%3Crect x='13' y='5' width='1' height='2' fill='%23000'/%3E%3Crect x='5' y='7' width='1' height='4' fill='%23000'/%3E%3Crect x='14' y='7' width='1' height='4' fill='%23000'/%3E%3Crect x='6' y='11' width='8' height='1' fill='%23000'/%3E%3Crect x='6' y='5' width='8' height='6' fill='%23fff2a8'/%3E%3Crect x='7' y='6' width='6' height='4' fill='%23ffe16b'/%3E%3Crect x='9' y='12' width='2' height='2' fill='%23000'/%3E%3Crect x='8' y='14' width='4' height='1' fill='%23000'/%3E%3Crect x='9' y='15' width='2' height='1' fill='%23000'/%3E%3Crect x='10' y='6' width='1' height='1' fill='%23ffffff'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-bar-icon-terminal {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'%3E%3Crect width='20' height='20' fill='none'/%3E%3Crect x='2' y='3' width='16' height='1' fill='%23000'/%3E%3Crect x='2' y='4' width='1' height='12' fill='%23000'/%3E%3Crect x='17' y='4' width='1' height='12' fill='%23000'/%3E%3Crect x='3' y='4' width='14' height='12' fill='%23000000'/%3E%3Crect x='3' y='16' width='14' height='1' fill='%23000'/%3E%3Crect x='4' y='5' width='3' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='9' width='6' height='1' fill='%23c0c0c0'/%3E%3Crect x='4' y='2' width='4' height='1' fill='%23ffffff'/%3E%3Crect x='14' y='2' width='2' height='1' fill='%23c0c0c0'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-bar-icon-task-manager {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'%3E%3Crect width='20' height='20' fill='none'/%3E%3Crect x='3' y='4' width='14' height='1' fill='%23000'/%3E%3Crect x='2' y='5' width='1' height='11' fill='%23000'/%3E%3Crect x='17' y='5' width='1' height='11' fill='%23000'/%3E%3Crect x='3' y='16' width='14' height='1' fill='%23000'/%3E%3Crect x='3' y='5' width='14' height='11' fill='%23ffffff'/%3E%3Crect x='3' y='5' width='14' height='2' fill='%23000080'/%3E%3Crect x='4' y='8' width='7' height='1' fill='%23808080'/%3E%3Crect x='4' y='10' width='6' height='1' fill='%23808080'/%3E%3Crect x='4' y='12' width='8' height='1' fill='%23808080'/%3E%3Crect x='13' y='8' width='2' height='5' fill='%2300a000'/%3E%3Crect x='14' y='7' width='1' height='1' fill='%2300a000'/%3E%3Crect x='15' y='6' width='1' height='1' fill='%2300a000'/%3E%3Crect x='15' y='12' width='1' height='2' fill='%23c00000'/%3E%3Crect x='14' y='13' width='2' height='1' fill='%23c00000'/%3E%3Crect x='15' y='14' width='1' height='1' fill='%23c00000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-bar-icon-snapshots {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'%3E%3Crect width='20' height='20' fill='none'/%3E%3Crect x='5' y='5' width='3' height='1' fill='%23000'/%3E%3Crect x='8' y='4' width='4' height='1' fill='%23000'/%3E%3Crect x='12' y='5' width='3' height='1' fill='%23000'/%3E%3Crect x='4' y='6' width='1' height='8' fill='%23000'/%3E%3Crect x='15' y='6' width='1' height='8' fill='%23000'/%3E%3Crect x='5' y='6' width='10' height='8' fill='%23c0c0c0'/%3E%3Crect x='5' y='6' width='10' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='14' width='10' height='1' fill='%23000'/%3E%3Crect x='6' y='7' width='8' height='6' fill='%23808080'/%3E%3Crect x='7' y='8' width='6' height='4' fill='%23ffffff'/%3E%3Crect x='8' y='8' width='4' height='1' fill='%23000080'/%3E%3Crect x='8' y='11' width='4' height='1' fill='%23000080'/%3E%3Crect x='7' y='9' width='1' height='2' fill='%23000080'/%3E%3Crect x='12' y='9' width='1' height='2' fill='%23000080'/%3E%3Crect x='6' y='6' width='2' height='1' fill='%23ffff00'/%3E%3Crect x='12' y='6' width='2' height='1' fill='%23ffff00'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-bar-icon-account {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' shape-rendering='crispEdges'%3E%3Crect width='20' height='20' fill='none'/%3E%3Crect x='8' y='3' width='4' height='1' fill='%23000'/%3E%3Crect x='7' y='4' width='1' height='4' fill='%23000'/%3E%3Crect x='12' y='4' width='1' height='4' fill='%23000'/%3E%3Crect x='8' y='8' width='4' height='1' fill='%23000'/%3E%3Crect x='8' y='4' width='4' height='4' fill='%23f6cf9d'/%3E%3Crect x='6' y='10' width='8' height='1' fill='%23000'/%3E%3Crect x='5' y='11' width='1' height='4' fill='%23000'/%3E%3Crect x='14' y='11' width='1' height='4' fill='%23000'/%3E%3Crect x='6' y='15' width='8' height='1' fill='%23000'/%3E%3Crect x='6' y='11' width='8' height='4' fill='%23000080'/%3E%3Crect x='7' y='11' width='6' height='1' fill='%233f6cff'/%3E%3Crect x='8' y='5' width='1' height='1' fill='%23000'/%3E%3Crect x='11' y='5' width='1' height='1' fill='%23000'/%3E%3Crect x='9' y='7' width='2' height='1' fill='%23c00000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc #workstation_kasm_status {
+  position: fixed;
+  left: calc(var(--workstation-kasm-sidebar-width) + 12px);
+  top: 12px;
+  right: auto;
+  bottom: auto;
+  max-width: 340px;
+  padding: 8px 12px;
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+  background: var(--workstation-win95-face);
+  color: #000;
+  font: 12px var(--workstation-ui-font);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s ease;
+  z-index: 135;
+  border-radius: 0 !important;
+}
+
+body.workstation-kasmvnc #workstation_kasm_status.is-visible {
+  opacity: 1;
+}
+
+body.workstation-kasmvnc #workstation_file_panel {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 95;
+}
+
+body.workstation-kasmvnc #workstation_terminal_panel,
+body.workstation-kasmvnc #workstation_task_manager_panel,
+body.workstation-kasmvnc #workstation_chat_panel,
+body.workstation-kasmvnc #workstation_snapshot_panel,
+body.workstation-kasmvnc #workstation_account_panel,
+body.workstation-kasmvnc #workstation_action_dialog {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+body.workstation-kasmvnc #workstation_terminal_panel {
+  z-index: 96;
+}
+
+body.workstation-kasmvnc #workstation_task_manager_panel {
+  z-index: 97;
+}
+
+body.workstation-kasmvnc #workstation_chat_panel {
+  z-index: 98;
+}
+
+body.workstation-kasmvnc #workstation_snapshot_panel {
+  z-index: 99;
+}
+
+body.workstation-kasmvnc #workstation_account_panel {
+  z-index: 100;
+}
+
+body.workstation-kasmvnc #workstation_action_dialog {
+  z-index: 130;
+}
+
+body.workstation-kasmvnc #workstation_file_panel[hidden] {
+  display: none !important;
+}
+
+body.workstation-kasmvnc #workstation_terminal_panel[hidden],
+body.workstation-kasmvnc #workstation_task_manager_panel[hidden],
+body.workstation-kasmvnc #workstation_chat_panel[hidden],
+body.workstation-kasmvnc #workstation_snapshot_panel[hidden],
+body.workstation-kasmvnc #workstation_account_panel[hidden],
+body.workstation-kasmvnc #workstation_action_dialog[hidden] {
+  display: none !important;
+}
+
+body.workstation-kasmvnc .workstation-file-window {
+  position: absolute;
+  top: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(920px, calc(100vw - var(--workstation-kasm-sidebar-width) - 54px));
+  height: min(620px, calc(100vh - 128px));
+  min-width: 700px;
+  min-height: 420px;
+  background: var(--workstation-win95-bg);
+  color: #111;
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  overflow: hidden;
+}
+
+body.workstation-kasmvnc .workstation-window-surface {
+  border-radius: 0 !important;
+}
+
+body.workstation-kasmvnc .workstation-snapshot-window {
+  width: min(860px, calc(100vw - var(--workstation-kasm-sidebar-width) - 64px));
+  height: min(540px, calc(100vh - 148px));
+  min-width: 620px;
+  min-height: 360px;
+}
+
+body.workstation-kasmvnc .workstation-terminal-window {
+  grid-template-rows: auto 1fr auto;
+  width: min(860px, calc(100vw - var(--workstation-kasm-sidebar-width) - 96px));
+  height: min(560px, calc(100vh - 156px));
+  min-width: 460px;
+  min-height: 280px;
+  resize: both;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-window {
+  grid-template-rows: auto auto 1fr auto;
+  width: min(1020px, calc(100vw - var(--workstation-kasm-sidebar-width) - 64px));
+  height: min(620px, calc(100vh - 140px));
+  min-width: 820px;
+  min-height: 440px;
+}
+
+body.workstation-kasmvnc .workstation-chat-window {
+  grid-template-rows: auto 1fr auto;
+  width: min(920px, calc(100vw - var(--workstation-kasm-sidebar-width) - 72px));
+  height: min(620px, calc(100vh - 140px));
+  min-width: 700px;
+  min-height: 420px;
+}
+
+body.workstation-kasmvnc .workstation-account-window {
+  grid-template-rows: auto 1fr auto;
+  width: min(720px, calc(100vw - var(--workstation-kasm-sidebar-width) - 84px));
+  height: min(460px, calc(100vh - 132px));
+  min-width: 520px;
+  min-height: 360px;
+}
+
+body.workstation-kasmvnc .workstation-terminal-window::-webkit-resizer {
+  background:
+    linear-gradient(135deg, transparent 0 42%, var(--workstation-win95-dark) 42% 48%, transparent 48% 58%, var(--workstation-win95-white) 58% 64%, transparent 64% 74%, var(--workstation-win95-dark) 74% 80%, transparent 80% 100%),
+    var(--workstation-win95-face);
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+}
+
+body.workstation-kasmvnc .workstation-dialog-window {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(520px, calc(100vw - var(--workstation-kasm-sidebar-width) - 64px));
+  min-width: 320px;
+  background: var(--workstation-win95-bg);
+  color: #111;
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+}
+
+body.workstation-kasmvnc .workstation-file-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 18px;
+  padding: 2px 4px 3px;
+  background: #7b7b7b;
+  color: #e8e8e8;
+  font: 12px var(--workstation-ui-font);
+  font-weight: 700;
+  user-select: none;
+  cursor: move;
+}
+
+body.workstation-kasmvnc .workstation-window-surface.is-active-window {
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+body.workstation-kasmvnc .workstation-window-surface.is-inactive-window {
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.22);
+}
+
+body.workstation-kasmvnc .workstation-window-surface.is-active-window .workstation-file-titlebar {
+  background: var(--workstation-win95-blue);
+  color: #fff;
+}
+
+body.workstation-kasmvnc .workstation-window-surface.is-dimmed-window {
+  opacity: 0.6;
+}
+
+body.workstation-kasmvnc .workstation-window-surface.is-dimmed-window .workstation-file-titlebar {
+  background: #7b7b7b;
+  color: #ebebeb;
+}
+
+body.workstation-kasmvnc .workstation-window-surface.is-inactive-window .workstation-file-titlebar {
+  background: #7b7b7b;
+  color: #ebebeb;
+}
+
+body.workstation-kasmvnc .workstation-file-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+body.workstation-kasmvnc .workstation-file-title-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  image-rendering: pixelated;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='3' y='3' width='4' height='2' fill='%23fff6bc'/%3E%3Crect x='2' y='4' width='6' height='2' fill='%23ffe48a'/%3E%3Crect x='1' y='5' width='1' height='7' fill='%23000'/%3E%3Crect x='2' y='5' width='11' height='1' fill='%23000'/%3E%3Crect x='13' y='6' width='1' height='6' fill='%23000'/%3E%3Crect x='2' y='12' width='11' height='1' fill='%23000'/%3E%3Crect x='2' y='6' width='11' height='6' fill='%23f6cf4f'/%3E%3Crect x='3' y='6' width='8' height='1' fill='%23fff7c7'/%3E%3Crect x='3' y='7' width='8' height='3' fill='%23f0c137'/%3E%3Crect x='3' y='10' width='8' height='1' fill='%23c18918'/%3E%3Crect x='7' y='3' width='1' height='2' fill='%23000'/%3E%3Crect x='3' y='2' width='4' height='1' fill='%23000'/%3E%3Crect x='2' y='3' width='1' height='2' fill='%23000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-snapshot-title-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='3' y='2' width='9' height='1' fill='%23000'/%3E%3Crect x='2' y='3' width='1' height='10' fill='%23000'/%3E%3Crect x='12' y='3' width='1' height='10' fill='%23000'/%3E%3Crect x='3' y='13' width='9' height='1' fill='%23000'/%3E%3Crect x='3' y='3' width='9' height='10' fill='%23ffffff'/%3E%3Crect x='4' y='4' width='7' height='2' fill='%23000080'/%3E%3Crect x='5' y='8' width='5' height='1' fill='%23808080'/%3E%3Crect x='5' y='10' width='4' height='1' fill='%23808080'/%3E%3Crect x='5' y='1' width='2' height='2' fill='%23ffff00'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-terminal-title-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='2' y='3' width='12' height='1' fill='%23000'/%3E%3Crect x='2' y='4' width='1' height='9' fill='%23000'/%3E%3Crect x='13' y='4' width='1' height='9' fill='%23000'/%3E%3Crect x='3' y='4' width='10' height='9' fill='%23000000'/%3E%3Crect x='3' y='13' width='10' height='1' fill='%23000'/%3E%3Crect x='4' y='5' width='3' height='1' fill='%23ffffff'/%3E%3Crect x='6' y='6' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='5' y='7' width='1' height='1' fill='%23ffffff'/%3E%3Crect x='8' y='9' width='4' height='1' fill='%23c0c0c0'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-task-manager-title-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='2' y='3' width='12' height='1' fill='%23000'/%3E%3Crect x='1' y='4' width='1' height='10' fill='%23000'/%3E%3Crect x='14' y='4' width='1' height='10' fill='%23000'/%3E%3Crect x='2' y='14' width='12' height='1' fill='%23000'/%3E%3Crect x='2' y='4' width='12' height='10' fill='%23ffffff'/%3E%3Crect x='2' y='4' width='12' height='2' fill='%23000080'/%3E%3Crect x='3' y='7' width='6' height='1' fill='%23808080'/%3E%3Crect x='3' y='9' width='5' height='1' fill='%23808080'/%3E%3Crect x='3' y='11' width='7' height='1' fill='%23808080'/%3E%3Crect x='10' y='7' width='2' height='4' fill='%2300a000'/%3E%3Crect x='11' y='6' width='1' height='1' fill='%2300a000'/%3E%3Crect x='12' y='11' width='1' height='2' fill='%23c00000'/%3E%3Crect x='11' y='12' width='2' height='1' fill='%23c00000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-chat-title-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='2' y='3' width='10' height='1' fill='%23000'/%3E%3Crect x='1' y='4' width='1' height='7' fill='%23000'/%3E%3Crect x='12' y='4' width='1' height='5' fill='%23000'/%3E%3Crect x='2' y='9' width='7' height='1' fill='%23000'/%3E%3Crect x='9' y='8' width='3' height='1' fill='%23000'/%3E%3Crect x='8' y='9' width='1' height='1' fill='%23000'/%3E%3Crect x='7' y='10' width='1' height='1' fill='%23000'/%3E%3Crect x='2' y='4' width='10' height='5' fill='%23ffffff'/%3E%3Crect x='3' y='5' width='6' height='1' fill='%23000080'/%3E%3Crect x='3' y='7' width='5' height='1' fill='%23808080'/%3E%3Crect x='7' y='11' width='2' height='1' fill='%23000'/%3E%3Crect x='9' y='10' width='1' height='1' fill='%23000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-account-title-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='6' y='2' width='4' height='1' fill='%23000'/%3E%3Crect x='5' y='3' width='1' height='4' fill='%23000'/%3E%3Crect x='10' y='3' width='1' height='4' fill='%23000'/%3E%3Crect x='6' y='7' width='4' height='1' fill='%23000'/%3E%3Crect x='6' y='3' width='4' height='4' fill='%23f6cf9d'/%3E%3Crect x='4' y='9' width='8' height='1' fill='%23000'/%3E%3Crect x='3' y='10' width='1' height='3' fill='%23000'/%3E%3Crect x='12' y='10' width='1' height='3' fill='%23000'/%3E%3Crect x='4' y='13' width='8' height='1' fill='%23000'/%3E%3Crect x='4' y='10' width='8' height='3' fill='%23000080'/%3E%3Crect x='5' y='10' width='6' height='1' fill='%233f6cff'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-dialog-title-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='7' y='2' width='2' height='8' fill='%23000'/%3E%3Crect x='5' y='11' width='6' height='2' fill='%23c00000'/%3E%3Crect x='6' y='10' width='4' height='1' fill='%23ff0000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-file-close,
+body.workstation-kasmvnc .workstation-file-btn {
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+  background: var(--workstation-win95-face);
+  color: #111;
+  cursor: pointer;
+  font: 12px var(--workstation-ui-font);
+}
+
+body.workstation-kasmvnc .workstation-file-close {
+  min-width: 22px;
+  min-height: 20px;
+  padding: 0;
+  font-size: 13px;
+  line-height: 1;
+}
+
+body.workstation-kasmvnc .workstation-file-close:active,
+body.workstation-kasmvnc .workstation-file-btn:active {
+  border-top: 2px solid var(--workstation-win95-dark);
+  border-left: 2px solid var(--workstation-win95-dark);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+}
+
+body.workstation-kasmvnc .workstation-file-toolbar,
+body.workstation-kasmvnc .workstation-file-statusbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background: var(--workstation-win95-panel);
+  border-top: 1px solid var(--workstation-win95-white);
+}
+
+body.workstation-kasmvnc .workstation-file-toolbar {
+  gap: 6px;
+  border-bottom: 1px solid var(--workstation-win95-mid);
+}
+
+body.workstation-kasmvnc .workstation-snapshot-toolbar {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+body.workstation-kasmvnc .workstation-file-btn {
+  min-height: 23px;
+  padding: 2px 10px;
+}
+
+body.workstation-kasmvnc .workstation-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 92px;
+  justify-content: flex-start;
+  padding: 3px 10px 3px 8px;
+}
+
+body.workstation-kasmvnc .workstation-toolbar-btn-danger {
+  min-width: 98px;
+}
+
+body.workstation-kasmvnc .workstation-toolbar-label {
+  white-space: nowrap;
+}
+
+body.workstation-kasmvnc .workstation-toolbar-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  image-rendering: pixelated;
+}
+
+body.workstation-kasmvnc .workstation-toolbar-icon-create {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='3' y='2' width='9' height='1' fill='%23000'/%3E%3Crect x='2' y='3' width='1' height='10' fill='%23000'/%3E%3Crect x='12' y='3' width='1' height='10' fill='%23000'/%3E%3Crect x='3' y='13' width='9' height='1' fill='%23000'/%3E%3Crect x='3' y='3' width='9' height='10' fill='%23ffffff'/%3E%3Crect x='4' y='4' width='7' height='2' fill='%23000080'/%3E%3Crect x='5' y='8' width='5' height='1' fill='%23808080'/%3E%3Crect x='5' y='10' width='4' height='1' fill='%23808080'/%3E%3Crect x='10' y='1' width='3' height='1' fill='%23000'/%3E%3Crect x='11' y='0' width='1' height='3' fill='%23000'/%3E%3Crect x='9' y='1' width='1' height='1' fill='%23ffff00'/%3E%3Crect x='10' y='0' width='3' height='1' fill='%23ffff00'/%3E%3Crect x='10' y='1' width='3' height='1' fill='%23ffff00'/%3E%3Crect x='10' y='2' width='3' height='1' fill='%23ffff00'/%3E%3Crect x='11' y='1' width='1' height='3' fill='%23ffff00'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-toolbar-icon-refresh {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='7' y='2' width='4' height='1' fill='%23008000'/%3E%3Crect x='5' y='3' width='2' height='1' fill='%23008000'/%3E%3Crect x='11' y='3' width='1' height='1' fill='%23008000'/%3E%3Crect x='4' y='4' width='1' height='1' fill='%23008000'/%3E%3Crect x='12' y='4' width='1' height='2' fill='%23008000'/%3E%3Crect x='3' y='5' width='1' height='5' fill='%23008000'/%3E%3Crect x='12' y='6' width='1' height='3' fill='%23008000'/%3E%3Crect x='4' y='10' width='1' height='1' fill='%23008000'/%3E%3Crect x='11' y='9' width='1' height='1' fill='%23008000'/%3E%3Crect x='5' y='11' width='2' height='1' fill='%23008000'/%3E%3Crect x='7' y='12' width='4' height='1' fill='%23008000'/%3E%3Crect x='10' y='11' width='2' height='1' fill='%23008000'/%3E%3Crect x='2' y='4' width='2' height='1' fill='%23008000'/%3E%3Crect x='1' y='3' width='1' height='3' fill='%23008000'/%3E%3Crect x='12' y='10' width='2' height='1' fill='%23008000'/%3E%3Crect x='14' y='9' width='1' height='3' fill='%23008000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-toolbar-icon-rollback {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='6' y='3' width='6' height='1' fill='%23000'/%3E%3Crect x='5' y='4' width='1' height='8' fill='%23000'/%3E%3Crect x='12' y='4' width='1' height='8' fill='%23000'/%3E%3Crect x='6' y='12' width='6' height='1' fill='%23000'/%3E%3Crect x='6' y='4' width='6' height='8' fill='%23ffffff'/%3E%3Crect x='7' y='5' width='4' height='2' fill='%23000080'/%3E%3Crect x='8' y='1' width='2' height='2' fill='%23ffff00'/%3E%3Crect x='2' y='7' width='5' height='1' fill='%23000080'/%3E%3Crect x='2' y='8' width='1' height='1' fill='%23000080'/%3E%3Crect x='3' y='6' width='1' height='1' fill='%23000080'/%3E%3Crect x='3' y='9' width='1' height='1' fill='%23000080'/%3E%3Crect x='4' y='5' width='1' height='1' fill='%23000080'/%3E%3Crect x='4' y='10' width='1' height='1' fill='%23000080'/%3E%3Crect x='5' y='4' width='1' height='1' fill='%23000080'/%3E%3Crect x='5' y='11' width='1' height='1' fill='%23000080'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-toolbar-icon-delete {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='4' y='4' width='8' height='1' fill='%23000'/%3E%3Crect x='5' y='5' width='1' height='7' fill='%23000'/%3E%3Crect x='10' y='5' width='1' height='7' fill='%23000'/%3E%3Crect x='6' y='12' width='4' height='1' fill='%23000'/%3E%3Crect x='6' y='5' width='4' height='7' fill='%23c0c0c0'/%3E%3Crect x='6' y='2' width='4' height='1' fill='%23000'/%3E%3Crect x='5' y='3' width='6' height='1' fill='%23000'/%3E%3Crect x='6' y='6' width='4' height='1' fill='%23ff0000'/%3E%3Crect x='7' y='7' width='2' height='1' fill='%23ff0000'/%3E%3Crect x='7' y='9' width='2' height='1' fill='%23ff0000'/%3E%3Crect x='6' y='10' width='4' height='1' fill='%23ff0000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-toolbar-icon-reset {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' shape-rendering='crispEdges'%3E%3Crect width='16' height='16' fill='none'/%3E%3Crect x='7' y='2' width='2' height='7' fill='%23000'/%3E%3Crect x='4' y='5' width='2' height='2' fill='%23ffff00'/%3E%3Crect x='10' y='5' width='2' height='2' fill='%23ffff00'/%3E%3Crect x='3' y='7' width='1' height='3' fill='%23000'/%3E%3Crect x='12' y='7' width='1' height='3' fill='%23000'/%3E%3Crect x='4' y='10' width='8' height='1' fill='%23000'/%3E%3Crect x='5' y='11' width='6' height='1' fill='%23000'/%3E%3Crect x='6' y='12' width='4' height='1' fill='%23000'/%3E%3Crect x='4' y='6' width='8' height='1' fill='%23c00000'/%3E%3Crect x='4' y='7' width='8' height='3' fill='%23ff0000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-file-btn:disabled {
+  color: #666;
+  cursor: default;
+}
+
+body.workstation-kasmvnc .workstation-file-address {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+body.workstation-kasmvnc .workstation-file-address label {
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+body.workstation-kasmvnc .workstation-file-address input {
+  flex: 1;
+  min-width: 0;
+  min-height: 23px;
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  background: #fff;
+  padding: 2px 6px;
+  font: 12px var(--workstation-ui-font);
+  outline: none;
+}
+
+body.workstation-kasmvnc .workstation-file-body {
+  position: relative;
+  background: #fff;
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  margin: 6px 8px 8px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 180px 1fr;
+}
+
+body.workstation-kasmvnc .workstation-terminal-body {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  justify-content: stretch;
+  grid-template-columns: none;
+  margin: 6px 8px 8px;
+  padding: 0;
+  min-height: 0;
+  min-width: 0;
+  background: #000;
+}
+
+body.workstation-kasmvnc .workstation-terminal-main {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  justify-content: stretch;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  background: #000;
+}
+
+body.workstation-kasmvnc .workstation-terminal-host {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: stretch;
+  justify-content: stretch;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #000;
+}
+
+body.workstation-kasmvnc .workstation-terminal-frame {
+  display: block;
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  border: 0;
+  background: #000;
+}
+
+body.workstation-kasmvnc .workstation-terminal-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  text-align: center;
+  background: #000;
+  color: #c0c0c0;
+  font: 13px var(--workstation-ui-font);
+  pointer-events: none;
+}
+
+body.workstation-kasmvnc .workstation-terminal-empty[hidden] {
+  display: none !important;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-toolbar {
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-toolbar-note {
+  min-width: 0;
+  flex: 1 1 220px;
+  color: #202020;
+  font: 12px var(--workstation-ui-font);
+}
+
+body.workstation-kasmvnc .workstation-task-manager-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 280px;
+  min-width: 220px;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-search-label {
+  font: 12px var(--workstation-ui-font);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-search-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 23px;
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  background: #fff;
+  padding: 2px 6px;
+  color: #111;
+  font: 12px var(--workstation-ui-font);
+  outline: none;
+  box-sizing: border-box;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-body {
+  min-height: 0;
+  grid-template-columns: 240px 1fr;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-sidebar p:last-child {
+  margin-bottom: 0;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-list {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  scrollbar-gutter: stable;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-list {
+  --workstation-task-manager-columns: minmax(300px, 1.45fr) 76px 88px 86px 92px 168px;
+  --workstation-task-manager-cell-gap: 12px;
+  --workstation-task-manager-cell-pad-y: 5px;
+  --workstation-task-manager-cell-pad-x: 10px;
+}
+
+body.workstation-kasmvnc .workstation-account-body {
+  min-height: 0;
+}
+
+body.workstation-kasmvnc .workstation-account-main {
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 10px;
+  background: var(--workstation-win95-panel);
+}
+
+body.workstation-kasmvnc .workstation-chat-body {
+  min-height: 0;
+  grid-template-columns: 220px 1fr;
+}
+
+body.workstation-kasmvnc .workstation-chat-sidebar {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  gap: 8px;
+  overflow: hidden;
+  min-height: 0;
+}
+
+body.workstation-kasmvnc .workstation-chat-sidebar p {
+  margin: 0;
+}
+
+body.workstation-kasmvnc .workstation-chat-user-list {
+  min-height: 0;
+  overflow: auto;
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  background: #fff;
+}
+
+body.workstation-kasmvnc .workstation-chat-main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-width: 0;
+  min-height: 0;
+  background: var(--workstation-win95-panel);
+}
+
+body.workstation-kasmvnc .workstation-chat-header {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid var(--workstation-win95-mid);
+  background: var(--workstation-win95-face);
+}
+
+body.workstation-kasmvnc .workstation-chat-header-primary {
+  font: 700 13px var(--workstation-ui-font);
+  color: var(--workstation-win95-blue);
+}
+
+body.workstation-kasmvnc .workstation-chat-header-secondary {
+  font: 11px var(--workstation-ui-font);
+  color: #404040;
+}
+
+body.workstation-kasmvnc .workstation-chat-messages {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  background: #ffffff;
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  margin: 8px 10px 0;
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+body.workstation-kasmvnc .workstation-chat-message {
+  display: grid;
+  gap: 4px;
+  max-width: min(72%, 460px);
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+body.workstation-kasmvnc .workstation-chat-message.is-self {
+  justify-self: start;
+}
+
+body.workstation-kasmvnc .workstation-chat-message.is-peer {
+  justify-self: end;
+}
+
+body.workstation-kasmvnc .workstation-chat-message-meta {
+  font: 11px var(--workstation-ui-font);
+  color: #404040;
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+}
+
+body.workstation-kasmvnc .workstation-chat-message-bubble {
+  padding: 8px 10px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.45;
+  font: 12px var(--workstation-ui-font);
+  color: #111;
+  background: var(--workstation-win95-face);
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+  user-select: text;
+  -webkit-user-select: text;
+  cursor: text;
+}
+
+body.workstation-kasmvnc .workstation-chat-message.is-peer .workstation-chat-message-bubble {
+  background: #fffbe6;
+}
+
+body.workstation-kasmvnc .workstation-chat-message-image-link {
+  display: inline-block;
+  padding: 4px;
+  background: var(--workstation-win95-face);
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+  text-decoration: none;
+  cursor: zoom-in;
+}
+
+body.workstation-kasmvnc .workstation-chat-message.is-peer .workstation-chat-message-image-link {
+  background: #fffbe6;
+}
+
+body.workstation-kasmvnc .workstation-chat-message-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 220px;
+  max-height: 160px;
+  background: #fff;
+}
+
+body.workstation-kasmvnc .workstation-chat-empty {
+  padding: 28px 18px;
+  color: #555;
+}
+
+body.workstation-kasmvnc .workstation-chat-composer {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: end;
+  padding: 10px;
+  background: var(--workstation-win95-panel);
+}
+
+body.workstation-kasmvnc .workstation-chat-composer label {
+  grid-column: 1 / -1;
+  font: 700 12px var(--workstation-ui-font);
+}
+
+body.workstation-kasmvnc .workstation-chat-input {
+  width: 100%;
+  min-height: 68px;
+  max-height: 160px;
+  padding: 6px 8px;
+  resize: vertical;
+  box-sizing: border-box;
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  background: #fff;
+  color: #111;
+  font: 12px var(--workstation-ui-font);
+}
+
+body.workstation-kasmvnc .workstation-chat-send {
+  min-width: 92px;
+  min-height: 30px;
+  align-self: stretch;
+}
+
+body.workstation-kasmvnc .workstation-chat-screenshot {
+  min-width: 98px;
+  min-height: 30px;
+  align-self: stretch;
+}
+
+body.workstation-kasmvnc .workstation-chat-user-row {
+  grid-template-columns: 1fr;
+}
+
+body.workstation-kasmvnc .workstation-chat-user-row.has-unread {
+  background: #fff8c8;
+}
+
+body.workstation-kasmvnc .workstation-chat-user-name {
+  align-items: flex-start;
+}
+
+body.workstation-kasmvnc .workstation-chat-user-text {
+  gap: 2px;
+  position: relative;
+  padding-right: 28px;
+}
+
+body.workstation-kasmvnc .workstation-chat-user-title {
+  font-weight: 700;
+}
+
+body.workstation-kasmvnc .workstation-chat-user-unread {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 19px;
+  height: 17px;
+  padding: 1px 4px 0;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--workstation-win95-white);
+  border-left: 1px solid var(--workstation-win95-white);
+  border-right: 1px solid var(--workstation-win95-dark);
+  border-bottom: 1px solid var(--workstation-win95-dark);
+  background: #ff0000;
+  color: #fff;
+  font: 700 10px var(--workstation-ui-font);
+}
+
+body.workstation-kasmvnc .workstation-chat-user-meta {
+  font-size: 11px;
+}
+
+body.workstation-kasmvnc .workstation-chat-user-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' shape-rendering='crispEdges'%3E%3Crect width='18' height='18' fill='none'/%3E%3Crect x='7' y='3' width='4' height='1' fill='%23000'/%3E%3Crect x='6' y='4' width='1' height='4' fill='%23000'/%3E%3Crect x='11' y='4' width='1' height='4' fill='%23000'/%3E%3Crect x='7' y='8' width='4' height='1' fill='%23000'/%3E%3Crect x='7' y='4' width='4' height='4' fill='%23f6cf9d'/%3E%3Crect x='4' y='11' width='10' height='1' fill='%23000'/%3E%3Crect x='3' y='12' width='1' height='3' fill='%23000'/%3E%3Crect x='14' y='12' width='1' height='3' fill='%23000'/%3E%3Crect x='4' y='15' width='10' height='1' fill='%23000'/%3E%3Crect x='4' y='12' width='10' height='3' fill='%23000080'/%3E%3Crect x='5' y='12' width='8' height='1' fill='%233f6cff'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-account-sidebar p:last-child {
+  margin-bottom: 0;
+}
+
+body.workstation-kasmvnc .workstation-account-card {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+
+body.workstation-kasmvnc .workstation-account-card-section {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  padding: 12px;
+  background: var(--workstation-win95-face);
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+}
+
+body.workstation-kasmvnc .workstation-account-card-title {
+  font: 700 13px var(--workstation-ui-font);
+  color: var(--workstation-win95-blue);
+}
+
+body.workstation-kasmvnc .workstation-account-card-text {
+  margin: 0;
+  font: 12px/1.45 var(--workstation-ui-font);
+  color: #202020;
+}
+
+body.workstation-kasmvnc .workstation-account-card-subtext {
+  color: #404040;
+}
+
+body.workstation-kasmvnc .workstation-account-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+body.workstation-kasmvnc .workstation-account-action {
+  justify-self: start;
+  min-width: 120px;
+  min-height: 28px;
+  padding: 0 12px;
+}
+
+body.workstation-kasmvnc .workstation-file-sidebar {
+  background: var(--workstation-win95-panel);
+  border-right: 1px solid var(--workstation-win95-mid);
+  padding: 10px 8px;
+  font: 12px var(--workstation-ui-font);
+  color: #202020;
+  min-height: 0;
+  overflow: auto;
+}
+
+body.workstation-kasmvnc .workstation-file-sidebar h3 {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--workstation-win95-blue);
+}
+
+body.workstation-kasmvnc .workstation-file-sidebar p {
+  margin: 0 0 10px 0;
+  line-height: 1.45;
+}
+
+body.workstation-kasmvnc .workstation-snapshot-sidebar p:last-child {
+  margin-bottom: 0;
+}
+
+body.workstation-kasmvnc .workstation-file-main {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-width: 0;
+  min-height: 0;
+}
+
+body.workstation-kasmvnc .workstation-file-header {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 120px 140px;
+  gap: 12px;
+  padding: 8px 10px;
+  background: var(--workstation-win95-panel);
+  border-bottom: 1px solid var(--workstation-win95-mid);
+  font: 12px var(--workstation-ui-font);
+  font-weight: 700;
+  color: #202020;
+}
+
+body.workstation-kasmvnc .workstation-snapshot-header,
+body.workstation-kasmvnc .workstation-snapshot-row {
+  grid-template-columns: minmax(240px, 1fr) 180px;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-header,
+body.workstation-kasmvnc .workstation-task-manager-row {
+  display: grid;
+  grid-template-columns: var(--workstation-task-manager-columns);
+  gap: var(--workstation-task-manager-cell-gap);
+  align-items: center;
+  box-sizing: border-box;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: var(--workstation-task-manager-cell-pad-y) var(--workstation-task-manager-cell-pad-x);
+  border-bottom: 1px solid var(--workstation-win95-mid);
+  background: #fff;
+  color: #111;
+  font: 12px var(--workstation-ui-font);
+  font-weight: 700;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-rows {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100%;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-header > :nth-child(n + 2),
+body.workstation-kasmvnc .workstation-task-manager-row > :nth-child(n + 2) {
+  text-align: right;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-sort {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: inherit;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-sort.is-active {
+  color: var(--workstation-win95-blue);
+}
+
+body.workstation-kasmvnc .workstation-file-list {
+  position: relative;
+  overflow: auto;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    repeating-linear-gradient(180deg, transparent 0, transparent 27px, rgba(0, 0, 0, 0.03) 27px, rgba(0, 0, 0, 0.03) 28px) border-box;
+}
+
+body.workstation-kasmvnc .workstation-file-list.is-loading {
+  opacity: 0.65;
+}
+
+body.workstation-kasmvnc .workstation-file-list.is-drop-active {
+  background:
+    linear-gradient(rgba(0, 0, 128, 0.12), rgba(0, 0, 128, 0.12)) padding-box,
+    repeating-linear-gradient(180deg, transparent 0, transparent 27px, rgba(0, 0, 0, 0.03) 27px, rgba(0, 0, 0, 0.03) 28px) border-box;
+}
+
+body.workstation-kasmvnc .workstation-file-list.is-drop-active::after {
+  content: "여기에 파일을 놓으면 현재 폴더로 업로드됩니다.";
+  position: absolute;
+  inset: 16px;
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--workstation-win95-blue);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--workstation-win95-blue);
+  font: 13px var(--workstation-ui-font);
+  pointer-events: none;
+  z-index: 2;
+}
+
+body.workstation-kasmvnc .workstation-file-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) 120px 140px;
+  gap: 12px;
+  align-items: center;
+  padding: 5px 10px;
+  font: 12px var(--workstation-ui-font);
+  cursor: default;
+  user-select: none;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-row {
+  width: 100%;
+  padding: var(--workstation-task-manager-cell-pad-y) var(--workstation-task-manager-cell-pad-x);
+  border: 0;
+  background: transparent;
+  color: #111;
+  font: 12px var(--workstation-ui-font);
+  text-align: left;
+  cursor: default;
+  user-select: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-row:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+body.workstation-kasmvnc .workstation-snapshot-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' shape-rendering='crispEdges'%3E%3Crect width='18' height='18' fill='none'/%3E%3Crect x='4' y='3' width='9' height='1' fill='%23000'/%3E%3Crect x='3' y='4' width='1' height='10' fill='%23000'/%3E%3Crect x='13' y='4' width='1' height='10' fill='%23000'/%3E%3Crect x='4' y='14' width='9' height='1' fill='%23000'/%3E%3Crect x='4' y='4' width='9' height='10' fill='%23ffffff'/%3E%3Crect x='5' y='5' width='7' height='2' fill='%23000080'/%3E%3Crect x='6' y='9' width='5' height='1' fill='%23808080'/%3E%3Crect x='6' y='11' width='4' height='1' fill='%23808080'/%3E%3Crect x='6' y='2' width='2' height='2' fill='%23ffff00'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-snapshot-created {
+  color: #444;
+}
+
+body.workstation-kasmvnc .workstation-file-row:hover {
+  background: rgba(0, 0, 128, 0.08);
+}
+
+body.workstation-kasmvnc .workstation-file-row.is-selected {
+  background: var(--workstation-win95-blue);
+  color: #fff;
+}
+
+body.workstation-kasmvnc .workstation-file-row.is-selected .workstation-file-kind,
+body.workstation-kasmvnc .workstation-file-row.is-selected .workstation-file-mtime,
+body.workstation-kasmvnc .workstation-file-row.is-selected .workstation-snapshot-meta {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+body.workstation-kasmvnc .workstation-file-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+body.workstation-kasmvnc .workstation-snapshot-text {
+  display: grid;
+  min-width: 0;
+  gap: 1px;
+}
+
+body.workstation-kasmvnc .workstation-snapshot-title {
+  font-weight: 700;
+}
+
+body.workstation-kasmvnc .workstation-snapshot-meta {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #555;
+  font: 11px var(--workstation-ui-font);
+}
+
+body.workstation-kasmvnc .workstation-task-manager-name {
+  align-items: flex-start;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-text {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-command {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-meta {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #555;
+  font: 11px var(--workstation-ui-font);
+}
+
+body.workstation-kasmvnc .workstation-file-icon {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 18px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px 18px;
+  image-rendering: pixelated;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' shape-rendering='crispEdges'%3E%3Crect width='18' height='18' fill='none'/%3E%3Crect x='2' y='3' width='12' height='1' fill='%23000'/%3E%3Crect x='1' y='4' width='1' height='10' fill='%23000'/%3E%3Crect x='14' y='4' width='1' height='10' fill='%23000'/%3E%3Crect x='2' y='14' width='12' height='1' fill='%23000'/%3E%3Crect x='2' y='4' width='12' height='10' fill='%23ffffff'/%3E%3Crect x='2' y='4' width='12' height='2' fill='%23000080'/%3E%3Crect x='3' y='7' width='6' height='1' fill='%23808080'/%3E%3Crect x='3' y='9' width='5' height='1' fill='%23808080'/%3E%3Crect x='3' y='11' width='7' height='1' fill='%23808080'/%3E%3Crect x='10' y='7' width='2' height='4' fill='%2300a000'/%3E%3Crect x='11' y='6' width='1' height='1' fill='%2300a000'/%3E%3Crect x='12' y='11' width='1' height='2' fill='%23c00000'/%3E%3Crect x='11' y='12' width='2' height='1' fill='%23c00000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-file-icon.is-dir {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' shape-rendering='crispEdges'%3E%3Crect width='18' height='18' fill='none'/%3E%3Crect x='3' y='4' width='5' height='2' fill='%23fff6bc'/%3E%3Crect x='2' y='5' width='7' height='2' fill='%23ffe48a'/%3E%3Crect x='1' y='6' width='1' height='7' fill='%23000'/%3E%3Crect x='2' y='6' width='13' height='1' fill='%23000'/%3E%3Crect x='15' y='7' width='1' height='6' fill='%23000'/%3E%3Crect x='2' y='13' width='13' height='1' fill='%23000'/%3E%3Crect x='2' y='7' width='13' height='6' fill='%23f6cf4f'/%3E%3Crect x='3' y='7' width='10' height='1' fill='%23fff7c7'/%3E%3Crect x='3' y='8' width='10' height='3' fill='%23f0c137'/%3E%3Crect x='3' y='11' width='10' height='1' fill='%23c18918'/%3E%3Crect x='8' y='4' width='1' height='2' fill='%23000'/%3E%3Crect x='3' y='3' width='5' height='1' fill='%23000'/%3E%3Crect x='2' y='4' width='1' height='2' fill='%23000'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-file-icon.is-file {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' shape-rendering='crispEdges'%3E%3Crect width='18' height='18' fill='none'/%3E%3Crect x='4' y='2' width='8' height='1' fill='%23000'/%3E%3Crect x='3' y='3' width='1' height='11' fill='%23000'/%3E%3Crect x='12' y='3' width='1' height='2' fill='%23000'/%3E%3Crect x='13' y='5' width='1' height='9' fill='%23000'/%3E%3Crect x='4' y='14' width='9' height='1' fill='%23000'/%3E%3Crect x='4' y='3' width='8' height='11' fill='%23ffffff'/%3E%3Crect x='11' y='3' width='1' height='1' fill='%23d8d8d8'/%3E%3Crect x='12' y='4' width='1' height='1' fill='%23d8d8d8'/%3E%3Crect x='8' y='3' width='3' height='1' fill='%23efefef'/%3E%3Crect x='5' y='6' width='6' height='1' fill='%23000080'/%3E%3Crect x='5' y='8' width='5' height='1' fill='%23808080'/%3E%3Crect x='5' y='10' width='6' height='1' fill='%23808080'/%3E%3Crect x='5' y='12' width='4' height='1' fill='%23808080'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-file-icon.is-document {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' shape-rendering='crispEdges'%3E%3Crect width='18' height='18' fill='none'/%3E%3Crect x='4' y='2' width='8' height='1' fill='%23000'/%3E%3Crect x='3' y='3' width='1' height='11' fill='%23000'/%3E%3Crect x='12' y='3' width='1' height='2' fill='%23000'/%3E%3Crect x='13' y='5' width='1' height='9' fill='%23000'/%3E%3Crect x='4' y='14' width='9' height='1' fill='%23000'/%3E%3Crect x='4' y='3' width='8' height='11' fill='%23ffffff'/%3E%3Crect x='11' y='3' width='1' height='1' fill='%23d8d8d8'/%3E%3Crect x='12' y='4' width='1' height='1' fill='%23d8d8d8'/%3E%3Crect x='5' y='5' width='6' height='1' fill='%23000080'/%3E%3Crect x='5' y='7' width='5' height='1' fill='%23000080'/%3E%3Crect x='5' y='9' width='6' height='1' fill='%23000080'/%3E%3Crect x='5' y='11' width='5' height='1' fill='%23000080'/%3E%3Crect x='5' y='13' width='4' height='1' fill='%23000080'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-file-icon.is-image {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' shape-rendering='crispEdges'%3E%3Crect width='18' height='18' fill='none'/%3E%3Crect x='2' y='3' width='12' height='1' fill='%23000'/%3E%3Crect x='2' y='4' width='1' height='10' fill='%23000'/%3E%3Crect x='14' y='4' width='1' height='10' fill='%23000'/%3E%3Crect x='3' y='4' width='11' height='10' fill='%23ffffff'/%3E%3Crect x='3' y='14' width='11' height='1' fill='%23000'/%3E%3Crect x='4' y='5' width='9' height='3' fill='%23a9d6ff'/%3E%3Crect x='4' y='8' width='9' height='5' fill='%23d6f3b8'/%3E%3Crect x='5' y='6' width='2' height='2' fill='%23fff36b'/%3E%3Crect x='4' y='11' width='3' height='2' fill='%23008000'/%3E%3Crect x='7' y='10' width='3' height='3' fill='%23008000'/%3E%3Crect x='10' y='9' width='3' height='4' fill='%2360a860'/%3E%3C/svg%3E");
+}
+
+body.workstation-kasmvnc .workstation-file-name-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.workstation-kasmvnc .workstation-task-manager-number,
+body.workstation-kasmvnc .workstation-task-manager-state,
+body.workstation-kasmvnc .workstation-task-manager-started {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #333;
+  font: 12px var(--workstation-ui-font);
+}
+
+body.workstation-kasmvnc .workstation-file-kind,
+body.workstation-kasmvnc .workstation-file-mtime,
+body.workstation-kasmvnc .workstation-file-empty {
+  font: 12px var(--workstation-ui-font);
+  color: #555;
+}
+
+body.workstation-kasmvnc .workstation-file-empty {
+  padding: 24px 18px;
+}
+
+body.workstation-kasmvnc .workstation-file-statusbar {
+  justify-content: space-between;
+  font: 12px var(--workstation-ui-font);
+  color: #202020;
+}
+
+body.workstation-kasmvnc .workstation-file-pane {
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  background: #fff;
+  padding: 3px 8px;
+  min-height: 22px;
+  min-width: 0;
+}
+
+body.workstation-kasmvnc .workstation-file-status-left {
+  flex: 1;
+}
+
+body.workstation-kasmvnc .workstation-file-status-right {
+  min-width: 140px;
+  text-align: right;
+}
+
+body.workstation-kasmvnc .workstation-dialog-body {
+  display: grid;
+  gap: 10px;
+  padding: 16px 18px 10px;
+  font: 12px var(--workstation-ui-font);
+  max-height: min(58vh, 440px);
+  overflow: auto;
+}
+
+body.workstation-kasmvnc .workstation-dialog-body-text,
+body.workstation-kasmvnc .workstation-dialog-detail {
+  margin: 0;
+  line-height: 1.5;
+}
+
+body.workstation-kasmvnc .workstation-dialog-detail {
+  color: #333;
+  max-height: 180px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
+
+body.workstation-kasmvnc .workstation-dialog-password-label {
+  display: block;
+  font-weight: 700;
+}
+
+body.workstation-kasmvnc .workstation-dialog-password-label[hidden],
+body.workstation-kasmvnc .workstation-dialog-password[hidden],
+body.workstation-kasmvnc .workstation-dialog-fields[hidden],
+body.workstation-kasmvnc .workstation-dialog-progress[hidden] {
+  display: none !important;
+}
+
+body.workstation-kasmvnc .workstation-dialog-fields {
+  display: grid;
+  gap: 10px;
+}
+
+body.workstation-kasmvnc .workstation-dialog-field {
+  display: grid;
+  gap: 5px;
+}
+
+body.workstation-kasmvnc .workstation-dialog-field-label {
+  font-weight: 700;
+}
+
+body.workstation-kasmvnc .workstation-dialog-password {
+  width: 100%;
+  height: 28px;
+  padding: 4px 8px;
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  background: #fff;
+  color: #111;
+  font: 12px var(--workstation-ui-font);
+  box-sizing: border-box;
+}
+
+body.workstation-kasmvnc .workstation-dialog-input {
+  width: 100%;
+  min-height: 28px;
+  padding: 4px 8px;
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  background: #fff;
+  color: #111;
+  font: 12px var(--workstation-ui-font);
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+body.workstation-kasmvnc textarea.workstation-dialog-input {
+  min-height: 86px;
+}
+
+body.workstation-kasmvnc .workstation-dialog-progress {
+  display: grid;
+  gap: 6px;
+}
+
+body.workstation-kasmvnc .workstation-dialog-progress-text {
+  font-weight: 700;
+  color: #000080;
+}
+
+body.workstation-kasmvnc .workstation-dialog-progress-box {
+  width: 100%;
+  height: 20px;
+  box-sizing: border-box;
+  border-top: 2px solid var(--workstation-win95-mid);
+  border-left: 2px solid var(--workstation-win95-mid);
+  border-right: 2px solid var(--workstation-win95-white);
+  border-bottom: 2px solid var(--workstation-win95-white);
+  background: #ffffff;
+  overflow: hidden;
+}
+
+body.workstation-kasmvnc .workstation-dialog-progress-bar {
+  width: 32%;
+  height: 100%;
+  background: linear-gradient(90deg, #000080 0%, #000080 50%, #c0c0c0 50%, #c0c0c0 100%);
+  background-size: 18px 100%;
+  animation: workstation-dialog-progress 1.1s linear infinite;
+}
+
+body.workstation-kasmvnc .workstation-dialog-error {
+  min-height: 18px;
+  color: #a00000;
+}
+
+body.workstation-kasmvnc .workstation-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 0 18px 16px;
+  pointer-events: auto;
+}
+
+@keyframes workstation-dialog-progress {
+  from {
+    transform: translateX(-36%);
+  }
+  to {
+    transform: translateX(260%);
+  }
+}
+
+body.workstation-kasmvnc .workstation-file-list::-webkit-scrollbar,
+body.workstation-kasmvnc .workstation-file-sidebar::-webkit-scrollbar,
+body.workstation-kasmvnc .workstation-chat-user-list::-webkit-scrollbar,
+body.workstation-kasmvnc .workstation-chat-messages::-webkit-scrollbar,
+body.workstation-kasmvnc .workstation-account-main::-webkit-scrollbar,
+body.workstation-kasmvnc .workstation-dialog-body::-webkit-scrollbar,
+body.workstation-kasmvnc .workstation-dialog-detail::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+body.workstation-kasmvnc .workstation-file-list::-webkit-scrollbar-track,
+body.workstation-kasmvnc .workstation-file-sidebar::-webkit-scrollbar-track,
+body.workstation-kasmvnc .workstation-chat-user-list::-webkit-scrollbar-track,
+body.workstation-kasmvnc .workstation-chat-messages::-webkit-scrollbar-track,
+body.workstation-kasmvnc .workstation-account-main::-webkit-scrollbar-track,
+body.workstation-kasmvnc .workstation-dialog-body::-webkit-scrollbar-track,
+body.workstation-kasmvnc .workstation-dialog-detail::-webkit-scrollbar-track {
+  background: var(--workstation-win95-panel);
+}
+
+body.workstation-kasmvnc .workstation-file-list::-webkit-scrollbar-thumb,
+body.workstation-kasmvnc .workstation-file-sidebar::-webkit-scrollbar-thumb,
+body.workstation-kasmvnc .workstation-chat-user-list::-webkit-scrollbar-thumb,
+body.workstation-kasmvnc .workstation-chat-messages::-webkit-scrollbar-thumb,
+body.workstation-kasmvnc .workstation-account-main::-webkit-scrollbar-thumb,
+body.workstation-kasmvnc .workstation-dialog-body::-webkit-scrollbar-thumb,
+body.workstation-kasmvnc .workstation-dialog-detail::-webkit-scrollbar-thumb {
+  border-top: 2px solid var(--workstation-win95-white);
+  border-left: 2px solid var(--workstation-win95-white);
+  border-right: 2px solid var(--workstation-win95-dark);
+  border-bottom: 2px solid var(--workstation-win95-dark);
+  background: var(--workstation-win95-face);
+}
+
+body.workstation-kasmvnc .workstation-file-list::-webkit-scrollbar-corner,
+body.workstation-kasmvnc .workstation-file-sidebar::-webkit-scrollbar-corner,
+body.workstation-kasmvnc .workstation-chat-user-list::-webkit-scrollbar-corner,
+body.workstation-kasmvnc .workstation-chat-messages::-webkit-scrollbar-corner,
+body.workstation-kasmvnc .workstation-account-main::-webkit-scrollbar-corner,
+body.workstation-kasmvnc .workstation-dialog-body::-webkit-scrollbar-corner,
+body.workstation-kasmvnc .workstation-dialog-detail::-webkit-scrollbar-corner {
+  background: var(--workstation-win95-panel);
+}
+
+body.workstation-kasmvnc .workstation-file-upload-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+  clip-path: inset(50%);
+  overflow: hidden;
+}

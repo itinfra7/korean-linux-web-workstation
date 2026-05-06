@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE actions [
+  <!ELEMENT actions (action)+>
+
+  <!ELEMENT action (icon|patterns|range|name|unique-id|command|description|startup-notify|directories|audio-files|image-files|other-files|text-files|video-files)*>
+
+  <!ELEMENT icon (#PCDATA)>
+  <!ELEMENT command (#PCDATA)>
+  <!ELEMENT patterns (#PCDATA)>
+  <!ELEMENT range (#PCDATA)>
+
+  <!ELEMENT name (#PCDATA)>
+  <!ATTLIST name xml:lang CDATA #IMPLIED>
+
+  <!ELEMENT unique-id (#PCDATA)>
+
+  <!ELEMENT description (#PCDATA)>
+  <!ATTLIST description xml:lang CDATA #IMPLIED>
+
+  <!ELEMENT startup-notify EMPTY>
+
+  <!ELEMENT directories EMPTY>
+  <!ELEMENT audio-files EMPTY>
+  <!ELEMENT image-files EMPTY>
+  <!ELEMENT other-files EMPTY>
+  <!ELEMENT text-files EMPTY>
+  <!ELEMENT video-files EMPTY>
+]>
+<actions>
+  <action>
+    <icon>utilities-terminal</icon>
+    <patterns>*</patterns>
+    <name>이 위치에서 터미널 열기</name>
+    <command>exo-open --working-directory %f --launch TerminalEmulator</command>
+    <description>선택한 위치에서 터미널을 엽니다.</description>
+    <startup-notify/>
+    <directories/>
+  </action>
+
+  <action>
+    <icon>accessories-text-editor</icon>
+    <patterns>*</patterns>
+    <name>Notepad++로 열기</name>
+    <command>/bin/sh -c 'exec /usr/local/bin/workstation-notepad-plus-plus "$@"' sh %F</command>
+    <description>선택한 파일을 Notepad++로 엽니다.</description>
+    <startup-notify/>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+
+  <action>
+    <icon>peazip_extract</icon>
+    <patterns>*.7z;*.7Z;*.ace;*.ACE;*.apk;*.APK;*.arc;*.ARC;*.arj;*.ARJ;*.bz2;*.BZ2;*.cab;*.CAB;*.cpio;*.CPIO;*.deb;*.DEB;*.ear;*.EAR;*.gz;*.GZ;*.iso;*.ISO;*.jar;*.JAR;*.lha;*.LHA;*.lzh;*.LZH;*.lz;*.LZ;*.lz4;*.LZ4;*.lrz;*.LRZ;*.lzma;*.LZMA;*.lzo;*.LZO;*.pea;*.PEA;*.rar;*.RAR;*.rpm;*.RPM;*.rz;*.RZ;*.tar;*.TAR;*.tar.bz2;*.TAR.BZ2;*.tbz;*.TBZ;*.tbz2;*.TBZ2;*.tar.gz;*.TAR.GZ;*.tgz;*.TGZ;*.tar.lz;*.TAR.LZ;*.tar.lz4;*.TAR.LZ4;*.tar.lzma;*.TAR.LZMA;*.tar.lzo;*.TAR.LZO;*.tar.xz;*.TAR.XZ;*.txz;*.TXZ;*.tar.zst;*.TAR.ZST;*.tar.zstd;*.TAR.ZSTD;*.tzst;*.TZST;*.wim;*.WIM;*.war;*.WAR;*.xz;*.XZ;*.z;*.Z;*.zip;*.ZIP;*.zipx;*.ZIPX;*.zpaq;*.ZPAQ;*.zst;*.ZST;*.001</patterns>
+    <name>여기에 풀기</name>
+    <command>/bin/sh -c 'exec /usr/local/bin/workstation-archive-action extract-here "$@"' sh %F</command>
+    <description>선택한 압축 파일을 현재 위치에 풉니다.</description>
+    <startup-notify/>
+    <other-files/>
+    <text-files/>
+  </action>
+
+  <action>
+    <icon>peazip_extract</icon>
+    <patterns>*.7z;*.7Z;*.ace;*.ACE;*.apk;*.APK;*.arc;*.ARC;*.arj;*.ARJ;*.bz2;*.BZ2;*.cab;*.CAB;*.cpio;*.CPIO;*.deb;*.DEB;*.ear;*.EAR;*.gz;*.GZ;*.iso;*.ISO;*.jar;*.JAR;*.lha;*.LHA;*.lzh;*.LZH;*.lz;*.LZ;*.lz4;*.LZ4;*.lrz;*.LRZ;*.lzma;*.LZMA;*.lzo;*.LZO;*.pea;*.PEA;*.rar;*.RAR;*.rpm;*.RPM;*.rz;*.RZ;*.tar;*.TAR;*.tar.bz2;*.TAR.BZ2;*.tbz;*.TBZ;*.tbz2;*.TBZ2;*.tar.gz;*.TAR.GZ;*.tgz;*.TGZ;*.tar.lz;*.TAR.LZ;*.tar.lz4;*.TAR.LZ4;*.tar.lzma;*.TAR.LZMA;*.tar.lzo;*.TAR.LZO;*.tar.xz;*.TAR.XZ;*.txz;*.TXZ;*.tar.zst;*.TAR.ZST;*.tar.zstd;*.TAR.ZSTD;*.tzst;*.TZST;*.wim;*.WIM;*.war;*.WAR;*.xz;*.XZ;*.z;*.Z;*.zip;*.ZIP;*.zipx;*.ZIPX;*.zpaq;*.ZPAQ;*.zst;*.ZST;*.001</patterns>
+    <name>파일명 폴더에 풀기</name>
+    <command>/bin/sh -c 'exec /usr/local/bin/workstation-archive-action extract-folder "$@"' sh %F</command>
+    <description>선택한 압축 파일마다 같은 이름의 폴더를 만들고 풉니다.</description>
+    <startup-notify/>
+    <other-files/>
+    <text-files/>
+  </action>
+
+  <action>
+    <icon>peazip_extract</icon>
+    <patterns>*.7z;*.7Z;*.ace;*.ACE;*.apk;*.APK;*.arc;*.ARC;*.arj;*.ARJ;*.bz2;*.BZ2;*.cab;*.CAB;*.cpio;*.CPIO;*.deb;*.DEB;*.ear;*.EAR;*.gz;*.GZ;*.iso;*.ISO;*.jar;*.JAR;*.lha;*.LHA;*.lzh;*.LZH;*.lz;*.LZ;*.lz4;*.LZ4;*.lrz;*.LRZ;*.lzma;*.LZMA;*.lzo;*.LZO;*.pea;*.PEA;*.rar;*.RAR;*.rpm;*.RPM;*.rz;*.RZ;*.tar;*.TAR;*.tar.bz2;*.TAR.BZ2;*.tbz;*.TBZ;*.tbz2;*.TBZ2;*.tar.gz;*.TAR.GZ;*.tgz;*.TGZ;*.tar.lz;*.TAR.LZ;*.tar.lz4;*.TAR.LZ4;*.tar.lzma;*.TAR.LZMA;*.tar.lzo;*.TAR.LZO;*.tar.xz;*.TAR.XZ;*.txz;*.TXZ;*.tar.zst;*.TAR.ZST;*.tar.zstd;*.TAR.ZSTD;*.tzst;*.TZST;*.wim;*.WIM;*.war;*.WAR;*.xz;*.XZ;*.z;*.Z;*.zip;*.ZIP;*.zipx;*.ZIPX;*.zpaq;*.ZPAQ;*.zst;*.ZST;*.001</patterns>
+    <name>알아서 풀기</name>
+    <command>/bin/sh -c 'exec /usr/local/bin/workstation-archive-action extract-smart "$@"' sh %F</command>
+    <description>선택한 압축 파일마다 구조에 따라 현재 위치 또는 새 폴더에 풉니다.</description>
+    <startup-notify/>
+    <other-files/>
+    <text-files/>
+  </action>
+
+  <action>
+    <icon>peazip_add</icon>
+    <patterns>*</patterns>
+    <name>압축하기</name>
+    <command>/bin/sh -c 'exec /usr/local/bin/workstation-archive-action compress "$@"' sh %F</command>
+    <description>선택한 파일과 폴더를 PeaZip 압축 창으로 보냅니다.</description>
+    <startup-notify/>
+    <directories/>
+    <audio-files/>
+    <image-files/>
+    <other-files/>
+    <text-files/>
+    <video-files/>
+  </action>
+</actions>
