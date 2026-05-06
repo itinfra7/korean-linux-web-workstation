@@ -4,6 +4,13 @@ Korean Linux web workstation with LDAP login, browser-based KasmVNC desktop acce
 
 ## Screenshots
 
+<img width="1228" height="878" alt="2" src="https://github.com/user-attachments/assets/0202f7ef-cce7-48fd-921f-f417012bf70e" />
+<img width="1228" height="878" alt="3" src="https://github.com/user-attachments/assets/6dd10e7c-e8ad-4ad8-beb6-a253c6c89236" />
+<img width="1228" height="878" alt="4" src="https://github.com/user-attachments/assets/1ec17048-33f3-4471-9090-515144ab6b58" />
+<img width="1228" height="878" alt="5" src="https://github.com/user-attachments/assets/b70863ef-ba2c-47f4-9907-35a07fb36dcb" />
+<img width="1228" height="878" alt="6" src="https://github.com/user-attachments/assets/203c8015-9a97-4d3e-b6fc-741507ed76f1" />
+<img width="1228" height="878" alt="1" src="https://github.com/user-attachments/assets/70d6c8d0-c9f7-48ec-813b-491789c1a84a" />
+
 ## Features
 
 ### Login and access
